@@ -18,7 +18,7 @@ test.cb('creates a new spike project', (t) => {
   emitter.on('error', t.fail)
   emitter.on('done', (project) => {
     t.is(project.config.context, testPath)
-    rimraf(testPath, t.end)
+    rimraf(testPath, {glob: false}, t.end)
   })
 
   Spike.new({
@@ -57,7 +57,7 @@ test.cb('creates a new project with a custom template', (t) => {
   e2.on('done', () => {
     const contents = fs.readFileSync(path.join(testPath, 'index.html'), 'utf8')
     t.truthy(contents.trim() === '<p>basic template: bar</p>')
-    rimraf(testPath, t.end)
+    rimraf(testPath, {glob: false}, t.end)
   })
 
   Spike.template.add({

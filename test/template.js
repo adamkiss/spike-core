@@ -78,7 +78,7 @@ test.cb('template.default sets the default template', (t) => {
     t.truthy(res.config.context, testPath)
     const content = fs.readFileSync(path.join(testPath, 'index.html'), 'utf8')
     t.truthy(content.trim() === '<p>basic template: bar</p>')
-    rimraf(testPath, t.end)
+    rimraf(testPath, {glob: false}, t.end)
   })
 
   Spike.template.add({

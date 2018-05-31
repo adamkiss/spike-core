@@ -4,7 +4,7 @@ const rimraf = require('rimraf')
 const {fs, compileFixture, fixturesPath} = require('./_helpers')
 
 test.cb.beforeEach((t) => {
-  rimraf(path.join(fixturesPath, 'vendor', 'public'), () => { t.end() })
+  rimraf(path.join(fixturesPath, 'vendor', 'public'), {glob: false}, () => { t.end() })
 })
 
 test('properly vendors specified files', (t) => {

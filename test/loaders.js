@@ -5,7 +5,7 @@ const fs = require('fs')
 const {compileFixture, fixturesPath} = require('./_helpers')
 
 test.cb.beforeEach((t) => {
-  rimraf(path.join(fixturesPath, 'loaders', 'public'), () => { t.end() })
+  rimraf(path.join(fixturesPath, 'loaders', 'public'), {glob: false}, () => { t.end() })
 })
 
 test('compiles a project with a custom loader', (t) => {
